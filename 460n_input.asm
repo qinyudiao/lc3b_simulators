@@ -1,0 +1,45 @@
+	.ORIG x3000
+	LEA R0, D
+	LDB R1, R0, #-2
+	LDB R2, R0, #-1
+	LDB R3, R0, #0
+	LDB R4, R0, #1
+	LDB R5, R0, #2
+	LEA R6, F
+	STB R1, R6, #-2
+	STB R2, R6, #-1
+	STB R3, R6, #0
+	STB R4, R6, #1
+	STB R5, R6, #2
+	HALT
+	JSR M
+	ADD R1, R0, #-4
+M	LEA R6, F
+	JSRR R6
+	AND R0, R0, #0
+	ADD R1, R0, #-4
+	LSHF R1, R1, #6
+	RSHFL R6, R1, #3
+	LDW R3, R0, #-2
+	LDW R4, R0, #0
+	LDW R5, R0, #3
+	RSHFA R5, R5, #5
+	STW R3, R0, #-2
+	STW R4, R0, #0
+	STW R5, R0, #3
+	LEA R5, E
+	JMP R5
+	ADD R1, R0, #-4
+E	HALT
+C	.FILL x8844
+	.FILL x6E4C
+D	.FILL xCAB0
+	.FILL xDEAD
+	.FILL x3044
+	.FILL x44BA
+	.FILL x0000
+	.FILL x0000
+F	.FILL x0000
+	.FILL x0000
+	.FILL x0000
+	.END
